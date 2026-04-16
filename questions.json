@@ -361,7 +361,7 @@
   {
     "id": 12,
     "topic": 1,
-    "cn_question": "A company wants to manage deployed IT services and govern its infrastructure as code (IaC) templates. Which AWS service will meet this requirement?",
+    "cn_question": "[AI翻译] 一家公司希望管理已部署的 IT 服务，并将其基础设施即代码（IaC）模板进行治理。哪项 AWS 服务可以满足此需求？",
     "cn_options": {
       "A": "AWS Resource Explorer",
       "B": "AWS Service Catalog",
@@ -677,10 +677,10 @@
   {
     "id": 22,
     "topic": 1,
-    "cn_question": "Which option is a physical location of the AWS global infrastructure?",
+    "cn_question": "[AI翻译] 以下哪项是 AWS 全球基础设施的物理位置？",
     "cn_options": {
       "A": "AWS DataSync",
-      "B": "AWS Region",
+      "B": "AWS 区域",
       "C": "Amazon Connect",
       "D": "AWS Organizations"
     },
@@ -1287,7 +1287,7 @@
   {
     "id": 41,
     "topic": 1,
-    "cn_question": "Which service enables customers to audit API calls in their AWS accounts?",
+    "cn_question": "[AI翻译] 哪项服务可以让客户审计其 AWS 账户中的 API 调用？",
     "cn_options": {
       "A": "AWS CloudTrail",
       "B": "AWS Trusted Advisor",
@@ -1604,7 +1604,7 @@
   {
     "id": 51,
     "topic": 1,
-    "cn_question": "Which of the following is a software development framework that a company can use to define cloud resources as code and provision the resources through AWS CloudFormation?",
+    "cn_question": "[AI翻译] 以下哪项是公司可以用来将云资源定义为代码，并通过 AWS CloudFormation 预置资源的软件开发框架？",
     "cn_options": {
       "A": "AWS CLI",
       "B": "AWS Developer Center",
@@ -2234,7 +2234,7 @@
   {
     "id": 71,
     "topic": 1,
-    "cn_question": "A company wants to assess its operational readiness. It also wants to identify and mitigate any operational risks ahead of a new product launch. Which AWS Support plan offers guidance and support for this kind of event at no additional charge?",
+    "cn_question": "[AI翻译] 一家公司希望评估其运营就绪状态，并在新产品发布之前识别和缓解运营风险。哪种 AWS Support 计划可以免费提供此类事件的指导和支持？",
     "cn_options": {
       "A": "AWS Business Support",
       "B": "AWS Basic Support",
@@ -3166,12 +3166,12 @@
   {
     "id": 101,
     "topic": 1,
-    "cn_question": "Which option is an AWS Cloud Adoption Framework (AWS CAF) platform perspective capability?",
+    "cn_question": "[AI翻译] 以下哪项是 AWS 云采用框架（AWS CAF）平台视角的能力？",
     "cn_options": {
-      "A": "Data architecture",
-      "B": "Data protection",
-      "C": "Data governance",
-      "D": "Data science"
+      "A": "数据架构",
+      "B": "数据保护",
+      "C": "数据治理",
+      "D": "数据科学"
     },
     "answer": [
       "A"
@@ -3197,12 +3197,12 @@
   {
     "id": 102,
     "topic": 1,
-    "cn_question": "A company is running a workload in the AWS Cloud. Which AWS best practice ensures the MOST cost-effective architecture for the workload?",
+    "cn_question": "[AI翻译] 一家公司正在 AWS 云中运行工作负载。哪种 AWS 最佳实践可以确保工作负载具有最具成本效益的架构？",
     "cn_options": {
-      "A": "Loose coupling",
-      "B": "Rightsizing",
-      "C": "Caching",
-      "D": "Redundancy"
+      "A": "松耦合",
+      "B": "合理调整大小",
+      "C": "缓存",
+      "D": "冗余"
     },
     "answer": [
       "B"
@@ -3480,7 +3480,7 @@
   {
     "id": 111,
     "topic": 1,
-    "cn_question": "A company needs to track the activity in its AWS accounts, and needs to know when an API call is made against its AWS resources. Which AWS tool or service can be used to meet these requirements?",
+    "cn_question": "[AI翻译] 一家公司需要跟踪其 AWS 账户中的活动，并需要知道何时针对其 AWS 资源进行了 API 调用。哪种 AWS 工具或服务可以满足这些需求？",
     "cn_options": {
       "A": "Amazon CloudWatch",
       "B": "Amazon Inspector",
@@ -3636,7 +3636,7 @@
   {
     "id": 116,
     "topic": 1,
-    "cn_question": "Which fully managed AWS service assists with the creation, testing, and management of custom Amazon EC2 images?",
+    "cn_question": "[AI翻译] 哪种完全托管的 AWS 服务可以协助创建、测试和管理自定义 Amazon EC2 镜像？",
     "cn_options": {
       "A": "EC2 Image Builder",
       "B": "Amazon Machine Image (AMI)",
@@ -3785,7 +3785,7 @@
   {
     "id": 121,
     "topic": 1,
-    "cn_question": "A company plans to deploy containers on AWS. The company wants full control of the compute resources that host the containers. Which AWS service will meet these requirements?",
+    "cn_question": "[AI翻译] 一家公司计划在 AWS 上部署容器。该公司希望完全控制托管容器的计算资源。哪项 AWS 服务可以满足这些需求？",
     "cn_options": {
       "A": "Amazon Elastic Kubernetes Service (Amazon EKS)",
       "B": "AWS Fargate",
@@ -3815,7 +3815,7 @@
   {
     "id": 122,
     "topic": 1,
-    "cn_question": "Which AWS service or feature allows users to create new AWS accounts, group multiple accounts to organize workflows, and apply policies to groups of accounts?",
+    "cn_question": "[AI翻译] 哪项 AWS 服务或功能允许用户创建新的 AWS 账户、将多个账户分组以组织工作流程，并将策略应用于账户组？",
     "cn_options": {
       "A": "AWS Identity and Access Management (IAM)",
       "B": "AWS Trusted Advisor",
@@ -4413,11 +4413,11 @@
   {
     "id": 141,
     "topic": 1,
-    "cn_question": "Which AWS Cloud service can send alerts to customers if custom spending thresholds are exceeded?",
+    "cn_question": "[AI翻译] 哪项 AWS 云服务可以在超出自定义支出阈值时向客户发送告警？",
     "cn_options": {
       "A": "AWS Budgets",
       "B": "AWS Cost Explorer",
-      "C": "AWS Cost Allocation Tags",
+      "C": "AWS 成本分配标签",
       "D": "AWS Organizations"
     },
     "answer": [
@@ -4441,12 +4441,12 @@
   {
     "id": 142,
     "topic": 1,
-    "cn_question": "A company plans to migrate to the AWS Cloud. The company wants to use the AWS Cloud Adoption Framework (AWS CAF) to define and track business outcomes as part of its cloud transformation journey. Which AWS CAF governance perspective capability will meet these requirements?",
+    "cn_question": "[AI翻译] 一家公司计划迁移到 AWS 云。该公司希望使用 AWS 云采用框架（AWS CAF）来定义和跟踪业务成果，作为其云转型旅程的一部分。哪种 AWS CAF 治理视角能力可以满足这些需求？",
     "cn_options": {
-      "A": "Benefits management",
-      "B": "Risk management",
-      "C": "Application portfolio management",
-      "D": "Cloud financial management"
+      "A": "收益管理",
+      "B": "风险管理",
+      "C": "应用程序组合管理",
+      "D": "云财务管理"
     },
     "answer": [
       "A"
@@ -4719,7 +4719,7 @@
   {
     "id": 151,
     "topic": 1,
-    "cn_question": "A company is moving an on-premises data center to the AWS Cloud. The company must migrate 50 petabytes of file storage data to AWS with the least possible operational overhead. Which AWS service or resource should the company use to meet these requirements?",
+    "cn_question": "[AI翻译] 一家公司正在将本地数据中心迁移到 AWS 云。该公司必须以最少的运营开销将 50 PB 的文件存储数据迁移到 AWS。该公司应使用哪项 AWS 服务或资源来满足这些需求？",
     "cn_options": {
       "A": "AWS Snowmobile",
       "B": "AWS Snowball Edge",
@@ -5147,10 +5147,10 @@
   {
     "id": 165,
     "topic": 1,
-    "cn_question": "A company wants to identify Amazon S3 buckets that are shared with another AWS account. Which AWS service or feature will meet these requirements?",
+    "cn_question": "[AI翻译] 一家公司希望识别与另一个 AWS 账户共享的 Amazon S3 存储桶。哪项 AWS 服务或功能可以满足这些需求？",
     "cn_options": {
       "A": "AWS Lake Formation",
-      "B": "IAM credential report",
+      "B": "IAM 凭证报告",
       "C": "Amazon CloudWatch",
       "D": "IAM Access Analyzer"
     },
@@ -5329,7 +5329,7 @@
   {
     "id": 171,
     "topic": 1,
-    "cn_question": "Which AWS service should users use to learn about AWS service availability and operations?",
+    "cn_question": "[AI翻译] 用户应使用哪项 AWS 服务来了解 AWS 服务的可用性和运营状况？",
     "cn_options": {
       "A": "Amazon EventBridge",
       "B": "AWS Service Catalog",
@@ -5941,7 +5941,7 @@
   {
     "id": 191,
     "topic": 1,
-    "cn_question": "A company has a fleet of cargo ships. The cargo ships have sensors that collect data at sea, where there is intermittent or no internet connectivity. The company needs to collect, format, and process the data at sea and move the data to AWS later. Which AWS service should the company use to meet these requirements?",
+    "cn_question": "[AI翻译] 一家公司拥有一支货船船队。货船上的传感器在海上收集数据，而海上的互联网连接是间歇性的或不可用的。该公司需要在海上收集、格式化和处理数据，然后再将数据移至 AWS。该公司应使用哪项 AWS 服务来满足这些需求？",
     "cn_options": {
       "A": "AWS IoT Core",
       "B": "Amazon Lightsail",
@@ -6030,7 +6030,7 @@
   {
     "id": 194,
     "topic": 1,
-    "cn_question": "A company needs a content delivery network that provides secure delivery of data, videos, applications, and APIs to users globally with low latency and high transfer speeds. Which AWS service meets these requirements?",
+    "cn_question": "[AI翻译] 一家公司需要一个内容分发网络，能够以低延迟和高传输速度在全球范围内安全地向用户交付数据、视频、应用程序和 API。哪项 AWS 服务可以满足这些需求？",
     "cn_options": {
       "A": "Amazon CloudFront",
       "B": "Elastic Load Balancing",
@@ -6243,7 +6243,7 @@
   {
     "id": 201,
     "topic": 1,
-    "cn_question": "A company is storing data that will not be frequently accessed in the AWS Cloud. If the company needs to access the data, the data needs to be retrieved within 12 hours. The company wants a solution that is cost-effective for storage costs for each gigabyte. Which Amazon S3 storage class will meet these requirements?",
+    "cn_question": "[AI翻译] 一家公司正在 AWS 云中存储不经常访问的数据。如果公司需要访问该数据，则需要在 12 小时内检索到。该公司希望找到一种按每 GB 存储成本来看最具成本效益的解决方案。哪种 Amazon S3 存储类可以满足这些需求？",
     "cn_options": {
       "A": "S3 Standard",
       "B": "S3 Glacier Flexible Retrieval",
@@ -6582,7 +6582,7 @@
   {
     "id": 212,
     "topic": 1,
-    "cn_question": "Which AWS service allows users to model and provision AWS resources using common programming languages?",
+    "cn_question": "[AI翻译] 哪项 AWS 服务允许用户使用常见编程语言来建模和预置 AWS 资源？",
     "cn_options": {
       "A": "AWS CloudFormation",
       "B": "AWS CodePipeline",
@@ -7163,10 +7163,10 @@
   {
     "id": 231,
     "topic": 1,
-    "cn_question": "Who enables encryption of data at rest for Amazon Elastic Block Store (Amazon EBS)?",
+    "cn_question": "[AI翻译] 谁负责为 Amazon Elastic Block Store (Amazon EBS) 启用静态数据加密？",
     "cn_options": {
       "A": "AWS Support",
-      "B": "AWS customers",
+      "B": "AWS 客户",
       "C": "AWS Key Management Service (AWS KMS)",
       "D": "AWS Trusted Advisor"
     },
@@ -8409,13 +8409,13 @@
   {
     "id": 271,
     "topic": 1,
-    "cn_question": "Which of the following are benefits that a company receives when it moves an on-premises production workload to AWS? (Choose two.)",
+    "cn_question": "[AI翻译] 当公司将本地生产工作负载迁移到 AWS 时，以下哪些是公司获得的好处？（选择两项）",
     "cn_options": {
-      "A": "AWS trains the company's staff on the use of all the AWS services.",
-      "B": "AWS manages all security in the cloud.",
-      "C": "AWS offers free support from technical account managers (TAMs).",
-      "D": "AWS offers high availability.",
-      "E": "AWS provides economies of scale."
+      "A": "AWS 培训公司员工使用所有 AWS 服务。",
+      "B": "AWS 管理云中的所有安全性。",
+      "C": "AWS 提供技术客户经理（TAM）的免费支持。",
+      "D": "AWS 提供高可用性。",
+      "E": "AWS 提供规模经济效益。"
     },
     "answer": [
       "D",
@@ -8719,12 +8719,12 @@
   {
     "id": 281,
     "topic": 1,
-    "cn_question": "A company is migrating its on-premises server to an Amazon EC2 instance. The server must stay active at all times for the next 12 months. Which EC2 pricing option is the MOST cost-effective for the company's workload?",
+    "cn_question": "[AI翻译] 一家公司正在将其本地服务器迁移到 Amazon EC2 实例。该服务器必须在未来 12 个月内始终保持运行。哪种 EC2 定价选项对该公司的工作负载最具成本效益？",
     "cn_options": {
-      "A": "On-Demand",
-      "B": "Dedicated Hosts",
-      "C": "Spot Instances",
-      "D": "Reserved Instances"
+      "A": "按需实例",
+      "B": "专用主机",
+      "C": "竞价实例",
+      "D": "预留实例"
     },
     "answer": [
       "D"
@@ -9134,7 +9134,7 @@
   {
     "id": 294,
     "topic": 1,
-    "cn_question": "Which Amazon S3 storage class is MOST cost-effective for unknown access patterns?",
+    "cn_question": "[AI翻译] 哪种 Amazon S3 存储类对于未知的访问模式最具成本效益？",
     "cn_options": {
       "A": "S3 Standard",
       "B": "S3 Standard-Infrequent Access (S3 Standard-IA)",
@@ -9349,11 +9349,11 @@
   {
     "id": 301,
     "topic": 1,
-    "cn_question": "Which of the following is a characteristic of the AWS account root user?",
+    "cn_question": "[AI翻译] 以下哪项是 AWS 账户根用户的特征？",
     "cn_options": {
-      "A": "The root user is the only user that can be configured with multi-factor authentication (MFA).",
-      "B": "The root user is the only user that can access the AWS Management Console.",
-      "C": "The root user is the first sign-in identity that is available when an AWS account is created. Most Voted"
+      "A": "根用户是唯一可以配置多因素认证（MFA）的用户。",
+      "B": "根用户是唯一可以访问 AWS 管理控制台的用户。",
+      "C": "根用户是 AWS 账户创建时第一个可用的登录身份。"
     },
     "answer": [
       "C"
@@ -9652,10 +9652,10 @@
   {
     "id": 311,
     "topic": 1,
-    "cn_question": "Which type of AWS storage is ephemeral and is deleted when an Amazon EC2 instance is stopped or terminated?",
+    "cn_question": "[AI翻译] 哪种类型的 AWS 存储是临时性的，会在 Amazon EC2 实例停止或终止时被删除？",
     "cn_options": {
       "A": "Amazon Elastic Block Store (Amazon EBS)",
-      "B": "Amazon EC2 instance store",
+      "B": "Amazon EC2 实例存储",
       "C": "Amazon Elastic File System (Amazon EFS)",
       "D": "Amazon S3"
     },
@@ -10053,10 +10053,10 @@
   {
     "id": 324,
     "topic": 1,
-    "cn_question": "Which mechanism allows developers to access AWS services from application code?",
+    "cn_question": "[AI翻译] 哪种机制允许开发人员从应用程序代码中访问 AWS 服务？",
     "cn_options": {
-      "A": "AWS Software Development Kit",
-      "B": "AWS Management Console",
+      "A": "AWS 软件开发工具包",
+      "B": "AWS 管理控制台",
       "C": "AWS CodePipeline",
       "D": "AWS Config"
     },
@@ -10080,12 +10080,12 @@
   {
     "id": 325,
     "topic": 1,
-    "cn_question": "A company is migrating to the AWS Cloud. The company wants to understand and identify potential security misconfigurations or unexpected behaviors. The company wants to prioritize any protective controls it might need. Which AWS Cloud Adoption Framework (AWS CAF) security perspective capability will meet these requirements?",
+    "cn_question": "[AI翻译] 一家正在迁移到 AWS 云的公司希望了解和识别潜在的安全配置错误或意外行为。该公司希望优先考虑其可能需要的保护性控制措施。哪种 AWS 云采用框架（AWS CAF）安全视角能力可以满足这些需求？",
     "cn_options": {
-      "A": "Identity and access management",
-      "B": "Threat detection",
-      "C": "Platform engineering",
-      "D": "Availability and continuity management"
+      "A": "身份和访问管理",
+      "B": "威胁检测",
+      "C": "平台工程",
+      "D": "可用性和连续性管理"
     },
     "answer": [
       "B"
@@ -10109,12 +10109,12 @@
   {
     "id": 326,
     "topic": 1,
-    "cn_question": "A company wants to establish a private network connection between AWS and its corporate network. Which AWS service or feature will meet this requirement?",
+    "cn_question": "[AI翻译] 一家公司希望在 AWS 与其企业网络之间建立专用网络连接。哪项 AWS 服务或功能可以满足此需求？",
     "cn_options": {
       "A": "Amazon Connect",
       "B": "Amazon Route 53",
       "C": "AWS Direct Connect",
-      "D": "VPC peering"
+      "D": "VPC 对等连接"
     },
     "answer": [
       "C"
@@ -10138,11 +10138,11 @@
   {
     "id": 327,
     "topic": 1,
-    "cn_question": "Which AWS services or features give users the ability to create a network connection between two VPCs? (Choose two.)",
+    "cn_question": "[AI翻译] 哪些 AWS 服务或功能使用户能够在两个 VPC 之间创建网络连接？（选择两项）",
     "cn_options": {
-      "A": "VPC endpoints",
+      "A": "VPC 终端节点",
       "B": "Amazon Route 53",
-      "C": "VPC peering",
+      "C": "VPC 对等连接",
       "D": "AWS Direct Connect",
       "E": "AWS Transit Gateway"
     },
@@ -10169,7 +10169,7 @@
   {
     "id": 328,
     "topic": 1,
-    "cn_question": "Which AWS service converts text to lifelike voices?",
+    "cn_question": "[AI翻译] 哪项 AWS 服务可以将文本转换为逼真的语音？",
     "cn_options": {
       "A": "Amazon Transcribe",
       "B": "Amazon Rekognition",
@@ -10198,7 +10198,7 @@
   {
     "id": 329,
     "topic": 1,
-    "cn_question": "A company wants to use application stacks to run a workload in the AWS Cloud. The company wants to use pre-configured instances. Which AWS service will meet these requirements?",
+    "cn_question": "[AI翻译] 一家公司希望使用应用程序堆栈在 AWS 云中运行工作负载。该公司希望使用预配置的实例。哪项 AWS 服务可以满足这些需求？",
     "cn_options": {
       "A": "Amazon Lightsail",
       "B": "Amazon Athena",
@@ -10227,7 +10227,7 @@
   {
     "id": 330,
     "topic": 1,
-    "cn_question": "Which AWS services are supported by Savings Plans? (Choose two.)",
+    "cn_question": "[AI翻译] 哪些 AWS 服务受 Savings Plans 支持？（选择两项）",
     "cn_options": {
       "A": "Amazon EC2",
       "B": "Amazon RDS",
@@ -10628,7 +10628,7 @@
   {
     "id": 343,
     "topic": 1,
-    "cn_question": "A company is migrating its applications from on-premises to the AWS Cloud. The company wants to ensure that the applications are assigned only the minimum permissions that are needed to perform all operations. Which AWS service will meet these requirements?",
+    "cn_question": "[AI翻译] 一家公司正在将其应用程序从本地迁移到 AWS 云。该公司希望确保应用程序仅被分配执行所有操作所需的最低权限。哪项 AWS 服务可以满足这些需求？",
     "cn_options": {
       "A": "AWS Identity and Access Management (IAM)",
       "B": "Amazon CloudWatch",
@@ -10876,12 +10876,12 @@
   {
     "id": 351,
     "topic": 1,
-    "cn_question": "A company is planning to migrate to the AWS Cloud. The company wants to identify measurable business outcomes that will explain the value of the company's decision to migrate. Which phase of the cloud transformation journey includes these activities?",
+    "cn_question": "[AI翻译] 一家公司正计划迁移到 AWS 云。该公司希望确定可衡量的业务成果，以解释其迁移决策的价值。云转型旅程的哪个阶段包括这些活动？",
     "cn_options": {
-      "A": "Envision",
-      "B": "Align",
-      "C": "Scale",
-      "D": "Launch"
+      "A": "构想",
+      "B": "对齐",
+      "C": "扩展",
+      "D": "启动"
     },
     "answer": [
       "A"
@@ -11189,7 +11189,7 @@
   {
     "id": 361,
     "topic": 1,
-    "cn_question": "Which of the following AWS services are serverless? (Choose two.)",
+    "cn_question": "[AI翻译] 以下哪些 AWS 服务是无服务器的？（选择两项）",
     "cn_options": {
       "A": "AWS Outposts",
       "B": "Amazon EC2",
@@ -11221,12 +11221,12 @@
   {
     "id": 362,
     "topic": 1,
-    "cn_question": "When a user wants to utilize their existing per-socket, per-core, or per-virtual machine software licenses for a Microsoft Windows server running on AWS, which Amazon EC2 instance type is required?",
+    "cn_question": "[AI翻译] 当用户希望在 AWS 上运行的 Microsoft Windows 服务器中使用其现有的按插槽、按核心或按虚拟机的软件许可证时，需要哪种 Amazon EC2 实例类型？",
     "cn_options": {
-      "A": "Spot Instances",
-      "B": "Dedicated Instances",
-      "C": "Dedicated Hosts",
-      "D": "Reserved Instances"
+      "A": "竞价实例",
+      "B": "专用实例",
+      "C": "专用主机",
+      "D": "预留实例"
     },
     "answer": [
       "C"
@@ -11485,12 +11485,12 @@
   {
     "id": 371,
     "topic": 1,
-    "cn_question": "Which architecture design principle describes the need to isolate failures between dependent components in the AWS Cloud?",
+    "cn_question": "[AI翻译] 哪种架构设计原则描述了在 AWS 云中隔离依赖组件之间的故障的需求？",
     "cn_options": {
-      "A": "Use a monolithic design.",
-      "B": "Design for automation.",
-      "C": "Design for single points of failure.",
-      "D": "Loosely couple components."
+      "A": "使用单体设计。",
+      "B": "为自动化而设计。",
+      "C": "为单点故障而设计。",
+      "D": "松散耦合组件。"
     },
     "answer": [
       "D"
@@ -12077,12 +12077,12 @@
   {
     "id": 391,
     "topic": 1,
-    "cn_question": "A company wants to manage sign-in security for workforce users. The company needs to create workforce users and centrally manage their access across all the company's AWS accounts and applications. Which AWS service will meet these requirements?",
+    "cn_question": "[AI翻译] 一家公司希望管理员工用户的登录安全。该公司需要创建员工用户并集中管理他们对所有公司 AWS 账户和应用程序的访问权限。哪项 AWS 服务可以满足这些需求？",
     "cn_options": {
       "A": "AWS Audit Manager",
       "B": "Amazon Cognito",
       "C": "AWS Security Hub",
-      "D": "AWS IAM Identity Center (AWS Single Sign-On)"
+      "D": "AWS IAM Identity Center（AWS Single Sign-On）"
     },
     "answer": [
       "D"
@@ -12986,7 +12986,7 @@
   {
     "id": 421,
     "topic": 1,
-    "cn_question": "Which AWS service or tool gives a company the ability to release application changes in an automated way?",
+    "cn_question": "[AI翻译] 哪项 AWS 服务或工具使公司能够以自动化方式发布应用程序变更？",
     "cn_options": {
       "A": "Amazon AppFlow",
       "B": "AWS CodeDeploy",
@@ -14234,12 +14234,12 @@
   {
     "id": 462,
     "topic": 1,
-    "cn_question": "A company wants to use Amazon EC2 instances for a stable production workload that will run for 1 year. Which instance purchasing option meets these requirements MOST cost-effectively?",
+    "cn_question": "[AI翻译] 一家公司希望将 Amazon EC2 实例用于将运行 1 年的稳定生产工作负载。哪种实例购买选项最具成本效益地满足这些需求？",
     "cn_options": {
-      "A": "Dedicated Hosts",
-      "B": "Reserved Instances",
-      "C": "On-Demand Instances",
-      "D": "Spot Instances"
+      "A": "专用主机",
+      "B": "预留实例",
+      "C": "按需实例",
+      "D": "竞价实例"
     },
     "answer": [
       "B"
@@ -14798,13 +14798,13 @@
   {
     "id": 481,
     "topic": 1,
-    "cn_question": "A company is planning to migrate applications to the AWS Cloud. During a system audit, the company finds that its content management system (CMS) application is incompatible with cloud environments. Which migration strategies will help the company to migrate the CMS application with the LEAST effort? (Choose two.)",
+    "cn_question": "[AI翻译] 一家公司计划将应用程序迁移到 AWS 云。在系统审计中，该公司发现其内容管理系统（CMS）应用程序与云环境不兼容。哪些迁移策略可以帮助该公司以最少的工作量迁移 CMS 应用程序？（选择两项）",
     "cn_options": {
-      "A": "Retire",
-      "B": "Rehost",
-      "C": "Repurchase",
-      "D": "Replatform",
-      "E": "Refactor"
+      "A": "淘汰",
+      "B": "重新托管",
+      "C": "重新购买",
+      "D": "重新平台化",
+      "E": "重构"
     },
     "answer": [
       "B",
@@ -15140,7 +15140,7 @@
   {
     "id": 492,
     "topic": 1,
-    "cn_question": "Which AWS compute service gives users the ability to securely and reliably run containers at scale?",
+    "cn_question": "[AI翻译] 哪项 AWS 计算服务使用户能够安全、可靠地大规模运行容器？",
     "cn_options": {
       "A": "Amazon Elastic Container Service (Amazon ECS)",
       "B": "Amazon Aurora",
@@ -15404,10 +15404,10 @@
   {
     "id": 501,
     "topic": 1,
-    "cn_question": "A company wants to implement detailed tracking of its cloud costs by department and project. Which AWS feature or service should the company use?",
+    "cn_question": "[AI翻译] 一家公司希望按部门和项目对其云成本进行详细跟踪。该公司应使用哪项 AWS 功能或服务？",
     "cn_options": {
-      "A": "Consolidated billing",
-      "B": "Cost allocation tags",
+      "A": "合并账单",
+      "B": "成本分配标签",
       "C": "AWS Marketplace",
       "D": "AWS Budgets"
     },
@@ -15697,12 +15697,12 @@
   {
     "id": 511,
     "topic": 1,
-    "cn_question": "Which task is the responsibility of the customer, according to the AWS shared responsibility model?",
+    "cn_question": "[AI翻译] 根据 AWS 共享责任模型，以下哪项任务是客户的责任？",
     "cn_options": {
-      "A": "Patch the Amazon DynamoDB operating system.",
-      "B": "Secure Amazon CloudFront edge locations by allowing physical access according to the principle of least privilege.",
-      "C": "Protect the hardware that runs AWS services.",
-      "D": "Use AWS Identity and Access Management (IAM) according to the principle of least privilege. Most Voted"
+      "A": "修补 Amazon DynamoDB 操作系统。",
+      "B": "根据最小权限原则允许物理访问来保护 Amazon CloudFront 边缘站点。",
+      "C": "保护运行 AWS 服务的硬件。",
+      "D": "根据最小权限原则使用 AWS Identity and Access Management (IAM)。"
     },
     "answer": [
       "D"
@@ -16185,13 +16185,13 @@
   {
     "id": 527,
     "topic": 1,
-    "cn_question": "Which statements accurately describe the relationships among components of AWS global infrastructure? (Choose two.)",
+    "cn_question": "[AI翻译] 以下哪些陈述准确描述了 AWS 全球基础设施各组件之间的关系？（选择两项）",
     "cn_options": {
-      "A": "There are more AWS Regions than Availability Zones.",
-      "B": "There are more edge locations than AWS Regions.",
-      "C": "An edge location is an Availability Zone.",
-      "D": "There are more AWS Regions than edge locations.",
-      "E": "There are more Availability Zones than AWS Regions."
+      "A": "AWS 区域的数量多于可用区。",
+      "B": "边缘站点的数量多于 AWS 区域。",
+      "C": "边缘站点就是可用区。",
+      "D": "AWS 区域的数量多于边缘站点。",
+      "E": "可用区的数量多于 AWS 区域。"
     },
     "answer": [
       "B",
@@ -16310,12 +16310,12 @@
   {
     "id": 531,
     "topic": 1,
-    "cn_question": "When designing AWS workloads to be operational even when there are component failures, what is an AWS best practice?",
+    "cn_question": "[AI翻译] 在设计 AWS 工作负载以在组件发生故障时仍能正常运行时，哪项是 AWS 最佳实践？",
     "cn_options": {
-      "A": "Perform quarterly disaster recovery tests.",
-      "B": "Place the main component on the us-east-1 Region.",
-      "C": "Design for automatic failover to healthy resources.",
-      "D": "Design workloads to fit on a single Amazon EC2 instance."
+      "A": "执行季度灾难恢复测试。",
+      "B": "将主要组件放在 us-east-1 区域。",
+      "C": "设计自动故障转移到健康资源。",
+      "D": "将工作负载设计为适合单个 Amazon EC2 实例。"
     },
     "answer": [
       "C"
@@ -16337,12 +16337,12 @@
   {
     "id": 532,
     "topic": 1,
-    "cn_question": "Which of the following can the AWS Pricing Calculator do?",
+    "cn_question": "[AI翻译] AWS 定价计算器可以做以下哪项？",
     "cn_options": {
-      "A": "Project monthly AWS costs.",
-      "B": "Calculate historical AWS costs.",
-      "C": "Provide in-depth information about AWS pricing strategies.",
-      "D": "Provide users with access to their monthly bills."
+      "A": "预估每月 AWS 成本。",
+      "B": "计算历史 AWS 成本。",
+      "C": "提供有关 AWS 定价策略的深入信息。",
+      "D": "为用户提供其月度账单的访问权限。"
     },
     "answer": [
       "A"
@@ -16364,11 +16364,11 @@
   {
     "id": 533,
     "topic": 1,
-    "cn_question": "Which AWS solution gives companies the ability to use protocols such as NFS to store and retrieve objects in Amazon S3?",
+    "cn_question": "[AI翻译] 哪种 AWS 解决方案使公司能够使用 NFS 等协议在 Amazon S3 中存储和检索对象？",
     "cn_options": {
       "A": "Amazon FSx for Lustre",
-      "B": "AWS Storage Gateway volume gateway",
-      "C": "AWS Storage Gateway file gateway",
+      "B": "AWS Storage Gateway 卷网关",
+      "C": "AWS Storage Gateway 文件网关",
       "D": "Amazon Elastic File System (Amazon EFS)"
     },
     "answer": [
@@ -16604,12 +16604,12 @@
   {
     "id": 541,
     "topic": 1,
-    "cn_question": "A company is requesting Payment Card Industry (PCI) reports that validate the operating effectiveness of AWS security controls. How should the company obtain these reports?",
+    "cn_question": "[AI翻译] 一家公司正在请求支付卡行业（PCI）报告，以验证 AWS 安全控制的运营有效性。该公司应如何获取这些报告？",
     "cn_options": {
-      "A": "Contact AWS Support.",
-      "B": "Download reports from AWS Artifact.",
-      "C": "Download reports from AWS Security Hub.",
-      "D": "Contact an AWS technical account manager (TAM)."
+      "A": "联系 AWS Support。",
+      "B": "从 AWS Artifact 下载报告。",
+      "C": "从 AWS Security Hub 下载报告。",
+      "D": "联系 AWS 技术客户经理（TAM）。"
     },
     "answer": [
       "B"
@@ -16633,7 +16633,7 @@
   {
     "id": 542,
     "topic": 1,
-    "cn_question": "An ecommerce company wants to distribute traffic between the Amazon EC2 instances that host its website. Which AWS service or resource will meet these requirements?",
+    "cn_question": "[AI翻译] 一家电子商务公司希望在托管其网站的 Amazon EC2 实例之间分配流量。哪项 AWS 服务或资源可以满足这些需求？",
     "cn_options": {
       "A": "Application Load Balancer",
       "B": "AWS WAF",
@@ -17196,12 +17196,12 @@
   {
     "id": 561,
     "topic": 1,
-    "cn_question": "Which recommendation can AWS Cost Explorer provide to help reduce cost?",
+    "cn_question": "[AI翻译] AWS Cost Explorer 可以提供哪些建议来帮助降低成本？",
     "cn_options": {
-      "A": "Use a specific database engine.",
-      "B": "Change the programming language for an application.",
-      "C": "Deploy a specific operating system.",
-      "D": "Terminate an idle instance."
+      "A": "使用特定的数据库引擎。",
+      "B": "更改应用程序的编程语言。",
+      "C": "部署特定的操作系统。",
+      "D": "终止空闲实例。"
     },
     "answer": [
       "D"
@@ -17224,12 +17224,12 @@
   {
     "id": 562,
     "topic": 1,
-    "cn_question": "A company wants to deploy an application in multiple Availability Zones in a single AWS Region. Which benefit will this deployment provide to the company?",
+    "cn_question": "[AI翻译] 一家公司希望在单个 AWS 区域的多个可用区中部署应用程序。这种部署将为公司带来哪些好处？",
     "cn_options": {
-      "A": "Improved connection performance for global customers",
-      "B": "Resilient architecture and a highly available solution",
-      "C": "Reduced overall data storage costs",
-      "D": "Ability to shut down an Availability Zone during periods of low demand"
+      "A": "提高全球客户的连接性能",
+      "B": "弹性架构和高可用性解决方案",
+      "C": "降低总体数据存储成本",
+      "D": "能够在低需求时段关闭可用区"
     },
     "answer": [
       "B"
@@ -17495,7 +17495,7 @@
   {
     "id": 571,
     "topic": 1,
-    "cn_question": "A company wants to centrally manage its employee's access to multiple AWS accounts. Which AWS service or feature should the company use to meet this requirement?",
+    "cn_question": "[AI翻译] 一家公司希望集中管理其员工对多个 AWS 账户的访问权限。该公司应使用哪项 AWS 服务或功能来满足此需求？",
     "cn_options": {
       "A": "AWS Identity and Access Management Access Analyzer",
       "B": "AWS Secrets Manager",
@@ -17523,12 +17523,12 @@
   {
     "id": 572,
     "topic": 1,
-    "cn_question": "A university receives a grant to conduct research by using AWS services. The research team needs to make sure the grant money lasts for the entire school year. The team has decided on a monthly allocation that adds up to the total grant amount. Which AWS service or feature will notify the team if spending exceeds the planned amount?",
+    "cn_question": "[AI翻译] 一所大学获得了一笔资助，用于使用 AWS 服务进行研究。研究团队需要确保资助资金能够持续整个学年。团队已决定了一个累计等于总资助金额的月度分配方案。哪项 AWS 服务或功能会在支出超过计划金额时通知团队？",
     "cn_options": {
       "A": "AWS Budgets",
       "B": "Cost Explorer",
-      "C": "Cost allocation tags",
-      "D": "Cost categories"
+      "C": "成本分配标签",
+      "D": "成本类别"
     },
     "answer": [
       "A"
@@ -17820,13 +17820,13 @@
   {
     "id": 582,
     "topic": 1,
-    "cn_question": "Which of the following actions are controlled with AWS Identity and Access Management (IAM)? (Choose two.)",
+    "cn_question": "[AI翻译] 以下哪些操作由 AWS Identity and Access Management (IAM) 控制？（选择两项）",
     "cn_options": {
-      "A": "Control access to AWS service APIs and to other specific resources.",
-      "B": "Provide intelligent threat detection and continuous monitoring.",
-      "C": "Protect the AWS environment using multi-factor authentication (MFA).",
-      "D": "Grant users access to AWS data centers.",
-      "E": "Provide firewall protection for applications from common web attacks."
+      "A": "控制对 AWS 服务 API 和其他特定资源的访问。",
+      "B": "提供智能威胁检测和持续监控。",
+      "C": "使用多因素认证（MFA）保护 AWS 环境。",
+      "D": "授予用户对 AWS 数据中心的访问权限。",
+      "E": "为应用程序提供防范常见 Web 攻击的防火墙保护。"
     },
     "answer": [
       "A",
@@ -17963,7 +17963,7 @@
   {
     "id": 587,
     "topic": 1,
-    "cn_question": "A company wants to run relationship databases in the AWS Cloud. The company wants to use a managed service that will install the database and run regular software updates. Which AWS service will meet these requirements?",
+    "cn_question": "[AI翻译] 一家公司希望在 AWS 云中运行关系型数据库。该公司希望使用一种托管服务来安装数据库并运行定期软件更新。哪项 AWS 服务可以满足这些需求？",
     "cn_options": {
       "A": "Amazon S3",
       "B": "Amazon RDS",
@@ -18383,12 +18383,12 @@
   {
     "id": 601,
     "topic": 1,
-    "cn_question": "Which AWS Cloud Adoption Framework (AWS CAF) perspective focuses on organizing an inventory of data products in a data catalog?",
+    "cn_question": "[AI翻译] AWS 云采用框架（AWS CAF）的哪个视角侧重于在数据目录中组织数据产品清单？",
     "cn_options": {
-      "A": "Operations",
-      "B": "Governance",
-      "C": "Business",
-      "D": "Platform"
+      "A": "运营",
+      "B": "治理",
+      "C": "业务",
+      "D": "平台"
     },
     "answer": [
       "B"
@@ -19571,12 +19571,12 @@
   {
     "id": 641,
     "topic": 1,
-    "cn_question": "Which AWS service or tool provides a visualization of historical AWS spending patterns and projections of future AWS costs?",
+    "cn_question": "[AI翻译] 哪项 AWS 服务或工具可以提供历史 AWS 支出模式的可视化以及未来 AWS 成本的预测？",
     "cn_options": {
-      "A": "AWS Cost and Usage Report",
+      "A": "AWS 成本和使用报告",
       "B": "AWS Budgets",
       "C": "Cost Explorer",
-      "D": "Amazon Cloud Watch"
+      "D": "Amazon CloudWatch"
     },
     "answer": [
       "C"
@@ -19865,11 +19865,11 @@
   {
     "id": 651,
     "topic": 1,
-    "cn_question": "A company needs to run some of its workloads on premises to comply with regulatory guidelines. The company wants to use the AWS Cloud to run workloads that are not required to be on premises. The company also wants to be able to use the same API calls for the on-premises workloads and the cloud workloads. Which AWS service or feature should the company use to meet these requirements?",
+    "cn_question": "[AI翻译] 一家公司需要在本地运行部分工作负载以遵守法规要求。该公司希望使用 AWS 云来运行不需要在本地运行的工作负载。该公司还希望能够对本地工作负载和云工作负载使用相同的 API 调用。该公司应使用哪项 AWS 服务或功能来满足这些需求？",
     "cn_options": {
-      "A": "Dedicated Hosts",
+      "A": "专用主机",
       "B": "AWS Outposts",
-      "C": "Availability Zones",
+      "C": "可用区",
       "D": "AWS Wavelength"
     },
     "answer": [
@@ -19894,12 +19894,12 @@
   {
     "id": 652,
     "topic": 1,
-    "cn_question": "What is the recommended use case for Amazon EC2 On-Demand Instances?",
+    "cn_question": "[AI翻译] Amazon EC2 按需实例的推荐使用场景是什么？",
     "cn_options": {
-      "A": "A steady-state workload that requires a particular EC2 instance configuration for a long period of time",
-      "B": "A workload that can be interrupted for a project that requires the lowest possible cost",
-      "C": "An unpredictable workload that does not require a long-term commitment",
-      "D": "A workload that is expected to run for longer than 1 year"
+      "A": "需要在较长时间内使用特定 EC2 实例配置的稳定工作负载",
+      "B": "可以中断的、需要最低成本的项目工作负载",
+      "C": "不需要长期承诺的不可预测工作负载",
+      "D": "预计运行时间超过 1 年的工作负载"
     },
     "answer": [
       "C"
@@ -19922,9 +19922,9 @@
   {
     "id": 653,
     "topic": 1,
-    "cn_question": "A company wants to use an AWS networking solution that can act as a centralized gateway between multiple VPCs and on-premises networks. Which AWS service or feature will meet this requirement?",
+    "cn_question": "[AI翻译] 一家公司希望使用一种 AWS 网络解决方案，该方案可以作为多个 VPC 和本地网络之间的集中网关。哪项 AWS 服务或功能可以满足此需求？",
     "cn_options": {
-      "A": "Gateway VPC endpoint",
+      "A": "网关 VPC 终端节点",
       "B": "AWS Direct Connect",
       "C": "AWS Transit Gateway",
       "D": "AWS PrivateLink"
@@ -20156,7 +20156,7 @@
   {
     "id": 661,
     "topic": 1,
-    "cn_question": "A company wants to transfer a virtual Windows Server 2022 that is currently running in its own data center to AWS. The company wants to automatically convert the existing server to run directly on AWS infrastructure instead of visualized hardware. Which AWS service will meet these requirements?",
+    "cn_question": "[AI翻译] 一家公司希望将目前在其自有数据中心运行的虚拟 Windows Server 2022 转移到 AWS。该公司希望自动将现有服务器转换为直接在 AWS 基础设施上运行，而不是在虚拟化硬件上运行。哪项 AWS 服务可以满足这些需求？",
     "cn_options": {
       "A": "AWS DataSync",
       "B": "AWS Database Migration Service (AWS DMS)",
@@ -20184,7 +20184,7 @@
   {
     "id": 662,
     "topic": 1,
-    "cn_question": "Which AWS service is a fully managed NoSQL database service?",
+    "cn_question": "[AI翻译] 哪项 AWS 服务是完全托管的 NoSQL 数据库服务？",
     "cn_options": {
       "A": "Amazon RDS",
       "B": "Amazon Redshift",
@@ -20451,7 +20451,7 @@
   {
     "id": 671,
     "topic": 1,
-    "cn_question": "A company that is planning to migrate to the AWS Cloud is based in an isolated area that has limited internet connectivity. The company needs to perform local data processing on premises. The company needs a solution that can operate without a stable internet connection. Which AWS service will meet these requirements?",
+    "cn_question": "[AI翻译] 一家计划迁移到 AWS 云的公司位于互联网连接有限的偏远地区。该公司需要在本地执行数据处理。该公司需要一种可以在没有稳定互联网连接的情况下运行的解决方案。哪项 AWS 服务可以满足这些需求？",
     "cn_options": {
       "A": "Amazon S3",
       "B": "AWS Snowball Edge",
@@ -20479,7 +20479,7 @@
   {
     "id": 672,
     "topic": 1,
-    "cn_question": "A company wants to build graph queries for real-time fraud pattern detection. Which AWS service will meet this requirement?",
+    "cn_question": "[AI翻译] 一家公司希望构建图查询以进行实时欺诈模式检测。哪项 AWS 服务可以满足此需求？",
     "cn_options": {
       "A": "Amazon Neptune",
       "B": "Amazon DynamoDB",
@@ -20706,9 +20706,9 @@
   {
     "id": 680,
     "topic": 1,
-    "cn_question": "A company has multiple SQL-based databases located in a data center. The company needs to migrate all database servers to the AWS Cloud to reduce the cost of operating physical servers. Which AWS service or resource will meet these requirements with the LEAST operational overhead?",
+    "cn_question": "[AI翻译] 一家公司在数据中心拥有多个基于 SQL 的数据库。该公司需要将所有数据库服务器迁移到 AWS 云以降低运行物理服务器的成本。哪项 AWS 服务或资源可以以最少的运营开销满足这些需求？",
     "cn_options": {
-      "A": "Amazon EC2 instances",
+      "A": "Amazon EC2 实例",
       "B": "Amazon RDS",
       "C": "Amazon DynamoDB",
       "D": "OpenSearch"
@@ -21036,12 +21036,12 @@
   {
     "id": 691,
     "topic": 1,
-    "cn_question": "For which use case are Amazon EC2 On-Demand Instances MOST cost-effective?",
+    "cn_question": "[AI翻译] Amazon EC2 按需实例对于哪种使用场景最具成本效益？",
     "cn_options": {
-      "A": "Compute-intensive video transcoding that can be restarted if necessary",
-      "B": "An instance in continual use for 1 month to conduct quality assurance tests",
-      "C": "An instance that runs a web server that will run for 1 year",
-      "D": "An instance that runs a database that will run for 3 years"
+      "A": "可以在必要时重新启动的计算密集型视频转码",
+      "B": "持续使用 1 个月进行质量保证测试的实例",
+      "C": "运行 Web 服务器将运行 1 年的实例",
+      "D": "运行数据库将运行 3 年的实例"
     },
     "answer": [
       "B"
@@ -21064,12 +21064,12 @@
   {
     "id": 692,
     "topic": 1,
-    "cn_question": "A company has developed a new In-house application. The company does not have a way to determine or predict the usage demand that the application will create. Which AWS Cloud computing benefit is the company seeking?",
+    "cn_question": "[AI翻译] 一家公司开发了一个新的内部应用程序。该公司无法确定或预测该应用程序将产生的使用需求。该公司正在寻求哪种 AWS 云计算优势？",
     "cn_options": {
-      "A": "Easy to use",
-      "B": "Cost-effective",
-      "C": "Secure",
-      "D": "Scalable and high performance"
+      "A": "易于使用",
+      "B": "具有成本效益",
+      "C": "安全",
+      "D": "可扩展且高性能"
     },
     "answer": [
       "D"
@@ -21402,7 +21402,7 @@
   {
     "id": 703,
     "topic": 1,
-    "cn_question": "A company is planning to migrate to the AWS Cloud. The company needs to understand the existing onpremises usage and configuration. The company does not want to replicate its workloads to AWS, yet. Which AWS service or tool will meet these requirements?",
+    "cn_question": "[AI翻译] 一家公司计划迁移到 AWS 云。该公司需要了解现有的本地使用情况和配置。该公司暂时不想将其工作负载复制到 AWS。哪项 AWS 服务或工具可以满足这些需求？",
     "cn_options": {
       "A": "AWS Application Discovery Service",
       "B": "AWS Application Migration Service",
