@@ -616,6 +616,45 @@ body {
   .review-item { min-height: 48px; }
 }
 
+/* Sync status */
+.sync-status {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--text-secondary);
+  padding: 4px 10px; border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+}
+.sync-status.synced { color: var(--green); }
+.sync-status.syncing { color: var(--aws-orange); }
+.sync-status.error { color: var(--red); }
+.sync-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.sync-status.syncing .sync-dot { animation: pulse 1s infinite; }
+
+/* Sync modal */
+.sync-modal-body { margin-bottom: 16px; }
+.sync-modal-body label { font-size: 14px; font-weight: 600; display: block; margin-bottom: 6px; }
+.sync-modal-body input[type="password"],
+.sync-modal-body input[type="text"] {
+  width: 100%; padding: 10px 14px; border: 2px solid var(--border);
+  border-radius: 8px; font-size: 14px; background: var(--card-bg);
+  color: var(--text); font-family: monospace;
+}
+.sync-modal-body input:focus { outline: none; border-color: var(--aws-orange); }
+.sync-info {
+  font-size: 13px; color: var(--text-secondary); line-height: 1.7;
+  margin-top: 12px; padding: 12px; background: var(--bg);
+  border-radius: 8px; border-left: 3px solid var(--aws-orange);
+}
+.sync-info a { color: var(--aws-orange); text-decoration: none; }
+.sync-info a:hover { text-decoration: underline; }
+.sync-info code { background: var(--border); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+.sync-actions-row { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+.sync-actions-row .btn { flex: 1; justify-content: center; min-width: 120px; }
+.sync-connected {
+  display: flex; align-items: center; gap: 10px; padding: 12px;
+  background: rgba(16,185,129,0.08); border-radius: 8px;
+  margin-bottom: 16px; font-size: 14px; color: var(--green);
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -647,6 +686,10 @@ body {
   </div>
   <div class="header-right">
     <div class="exam-timer" id="examTimer">&#9202; <span id="timerDisplay">90:00</span></div>
+    <div class="sync-status" id="syncStatus" onclick="showSyncModal()" style="cursor:pointer;display:none;">
+      <span class="sync-dot"></span><span id="syncText">未连接</span>
+    </div>
+    <button class="icon-btn" onclick="showSyncModal()" title="云同步">&#9729;</button>
     <button class="icon-btn" onclick="toggleDark()" title="切换主题" id="darkBtn">&#9790;</button>
     <button class="icon-btn" onclick="showDataModal()" title="数据管理">&#128190;</button>
     <button class="icon-btn" onclick="showPage('landing')" title="首页">&#8962;</button>
@@ -852,6 +895,14 @@ body {
   </div>
 </div>
 
+<!-- Sync Modal -->
+<div class="modal-overlay" id="syncModal" onclick="if(event.target===this)closeSyncModal()">
+  <div class="modal">
+    <h3>&#9729; 云同步设置</h3>
+    <div id="syncModalContent"></div>
+  </div>
+</div>
+
 <script src="questions.js"></script>
 <script>
 // ===== Global State =====
@@ -866,9 +917,16 @@ let reviewFilter = 'all';
 let examTimerInterval = null;
 let examTimeLeft = 0; // seconds
 
+// ===== Gist Sync State =====
+let syncToken = '';   // GitHub PAT
+let syncGistId = '';  // Gist ID
+let syncDebounceTimer = null;
+
 // ===== Init =====
 async function init() {
   loadStorage();
+  loadSyncConfig();
+  updateSyncStatusUI();
 
   // Method 1: use pre-loaded data from questions.js <script> tag
   if (typeof QUESTIONS_DATA !== 'undefined' && Array.isArray(QUESTIONS_DATA) && QUESTIONS_DATA.length > 0) {
@@ -895,6 +953,11 @@ async function init() {
   document.getElementById('mainApp').style.display = 'block';
   renderLanding();
   setupKeyboard();
+
+  // 启动时自动从云端同步
+  if (syncToken && syncGistId) {
+    syncFromGist().then(ok => { if (ok) renderLanding(); });
+  }
 }
 
 function loadStorage() {
@@ -912,6 +975,8 @@ function saveStorage() {
   localStorage.setItem('clf02_progress', JSON.stringify(progress));
   localStorage.setItem('clf02_bookmarks', JSON.stringify([...bookmarks]));
   localStorage.setItem('clf02_dark', darkMode);
+  // 自动云同步（防抖 3 秒）
+  debounceSyncUp();
 }
 
 // ===== Keyboard Shortcuts =====
@@ -1755,6 +1820,287 @@ function escHtml(s) {
   const d = document.createElement('div');
   d.textContent = s;
   return d.innerHTML;
+}
+
+// ===== Gist Cloud Sync =====
+const GIST_FILENAME = 'clf02-quiz-progress.json';
+
+function loadSyncConfig() {
+  try {
+    syncToken = localStorage.getItem('clf02_sync_token') || '';
+    syncGistId = localStorage.getItem('clf02_sync_gist_id') || '';
+  } catch(e) {}
+}
+
+function saveSyncConfig() {
+  localStorage.setItem('clf02_sync_token', syncToken);
+  localStorage.setItem('clf02_sync_gist_id', syncGistId);
+}
+
+function clearSyncConfig() {
+  syncToken = '';
+  syncGistId = '';
+  localStorage.removeItem('clf02_sync_token');
+  localStorage.removeItem('clf02_sync_gist_id');
+}
+
+function updateSyncStatusUI() {
+  const el = document.getElementById('syncStatus');
+  const text = document.getElementById('syncText');
+  if (!syncToken) {
+    el.style.display = 'none';
+    return;
+  }
+  el.style.display = 'flex';
+  el.className = 'sync-status synced';
+  text.textContent = '已连接';
+}
+
+function setSyncStatusUI(status, msg) {
+  const el = document.getElementById('syncStatus');
+  const text = document.getElementById('syncText');
+  el.style.display = 'flex';
+  el.className = 'sync-status ' + status;
+  text.textContent = msg;
+}
+
+function debounceSyncUp() {
+  if (!syncToken) return;
+  if (syncDebounceTimer) clearTimeout(syncDebounceTimer);
+  syncDebounceTimer = setTimeout(() => syncToGist(), 3000);
+}
+
+async function gistApiCall(method, url, body) {
+  const opts = {
+    method,
+    headers: {
+      'Authorization': 'token ' + syncToken,
+      'Accept': 'application/vnd.github.v3+json',
+    }
+  };
+  if (body) {
+    opts.headers['Content-Type'] = 'application/json';
+    opts.body = JSON.stringify(body);
+  }
+  const resp = await fetch(url, opts);
+  if (!resp.ok) {
+    const err = await resp.text();
+    throw new Error(`GitHub API ${resp.status}: ${err.substring(0, 100)}`);
+  }
+  return resp.json();
+}
+
+async function syncToGist() {
+  if (!syncToken) return;
+  setSyncStatusUI('syncing', '同步中...');
+
+  const data = {
+    version: 2,
+    lastSync: new Date().toISOString(),
+    progress: progress,
+    bookmarks: [...bookmarks]
+  };
+
+  try {
+    if (syncGistId) {
+      // Update existing Gist
+      await gistApiCall('PATCH', `https://api.github.com/gists/${syncGistId}`, {
+        files: { [GIST_FILENAME]: { content: JSON.stringify(data) } }
+      });
+    } else {
+      // Create new private Gist
+      const result = await gistApiCall('POST', 'https://api.github.com/gists', {
+        description: 'AWS CLF-C02 Quiz Progress (auto-synced)',
+        public: false,
+        files: { [GIST_FILENAME]: { content: JSON.stringify(data) } }
+      });
+      syncGistId = result.id;
+      saveSyncConfig();
+    }
+    setSyncStatusUI('synced', '已同步');
+  } catch(e) {
+    console.error('Sync up failed:', e);
+    setSyncStatusUI('error', '同步失败');
+  }
+}
+
+async function syncFromGist() {
+  if (!syncToken || !syncGistId) return false;
+  setSyncStatusUI('syncing', '拉取中...');
+
+  try {
+    const gist = await gistApiCall('GET', `https://api.github.com/gists/${syncGistId}`);
+    const file = gist.files[GIST_FILENAME];
+    if (!file) throw new Error('Gist 中没有找到进度数据');
+
+    const data = JSON.parse(file.content);
+    if (data.progress) {
+      // Merge: cloud data as base, local overrides only if newer
+      const cloudCount = Object.keys(data.progress).length;
+      const localCount = Object.keys(progress).length;
+
+      // Use whichever has more data, then merge the other
+      if (cloudCount >= localCount) {
+        progress = { ...data.progress, ...progress };
+      } else {
+        progress = { ...progress, ...data.progress };
+      }
+
+      if (data.bookmarks) {
+        data.bookmarks.forEach(b => bookmarks.add(b));
+      }
+      saveStorageLocal(); // Save without triggering sync
+      setSyncStatusUI('synced', '已同步');
+      return true;
+    }
+  } catch(e) {
+    console.error('Sync down failed:', e);
+    setSyncStatusUI('error', '拉取失败');
+  }
+  return false;
+}
+
+// Save to localStorage only (no sync trigger)
+function saveStorageLocal() {
+  localStorage.setItem('clf02_progress', JSON.stringify(progress));
+  localStorage.setItem('clf02_bookmarks', JSON.stringify([...bookmarks]));
+  localStorage.setItem('clf02_dark', darkMode);
+}
+
+async function validateToken(token) {
+  try {
+    const resp = await fetch('https://api.github.com/user', {
+      headers: { 'Authorization': 'token ' + token }
+    });
+    if (resp.ok) {
+      const user = await resp.json();
+      return user.login;
+    }
+  } catch(e) {}
+  return null;
+}
+
+async function findExistingGist(token) {
+  try {
+    const resp = await fetch('https://api.github.com/gists?per_page=100', {
+      headers: { 'Authorization': 'token ' + token }
+    });
+    if (resp.ok) {
+      const gists = await resp.json();
+      for (const g of gists) {
+        if (g.files[GIST_FILENAME]) return g.id;
+      }
+    }
+  } catch(e) {}
+  return null;
+}
+
+// ===== Sync Modal =====
+function showSyncModal() {
+  document.getElementById('syncModal').classList.add('active');
+  renderSyncModalContent();
+}
+
+function closeSyncModal() {
+  document.getElementById('syncModal').classList.remove('active');
+}
+
+function renderSyncModalContent() {
+  const el = document.getElementById('syncModalContent');
+  if (syncToken) {
+    // Already connected
+    el.innerHTML = `
+      <div class="sync-connected">&#9989; 已连接 GitHub 云同步</div>
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px;">
+        Gist ID: <code style="font-size:12px;background:var(--border);padding:2px 6px;border-radius:4px;">${syncGistId || '待创建'}</code>
+      </p>
+      <div class="sync-actions-row">
+        <button class="btn btn-primary" onclick="manualSyncUp()">&#8593; 上传到云端</button>
+        <button class="btn btn-secondary" onclick="manualSyncDown()">&#8595; 从云端下载</button>
+      </div>
+      <div class="sync-actions-row" style="margin-top:12px;">
+        <button class="btn btn-danger" onclick="disconnectSync()">断开连接</button>
+      </div>
+    `;
+  } else {
+    // Setup
+    el.innerHTML = `
+      <div class="sync-info">
+        <b>使用方法：</b><br>
+        1. 打开 <a href="https://github.com/settings/tokens/new?scopes=gist&description=CLF02-Quiz-Sync" target="_blank">GitHub Token 生成页面</a><br>
+        2. 勾选 <code>gist</code> 权限，点击 Generate token<br>
+        3. 复制生成的 Token 粘贴到下方
+      </div>
+      <div class="sync-modal-body" style="margin-top:16px;">
+        <label>GitHub Personal Access Token</label>
+        <input type="password" id="syncTokenInput" placeholder="ghp_xxxxxxxxxxxx">
+      </div>
+      <div class="sync-actions-row">
+        <button class="btn btn-primary" onclick="connectSync()">&#9729; 连接</button>
+        <button class="btn btn-secondary" onclick="closeSyncModal()">取消</button>
+      </div>
+    `;
+  }
+}
+
+async function connectSync() {
+  const input = document.getElementById('syncTokenInput');
+  const token = input.value.trim();
+  if (!token) { alert('请输入 Token'); return; }
+
+  input.disabled = true;
+  const username = await validateToken(token);
+  if (!username) {
+    alert('Token 无效，请检查后重试。');
+    input.disabled = false;
+    return;
+  }
+
+  syncToken = token;
+
+  // Check if existing gist
+  const existingId = await findExistingGist(token);
+  if (existingId) {
+    syncGistId = existingId;
+    saveSyncConfig();
+    updateSyncStatusUI();
+
+    if (confirm(`找到已有的云端数据，是否下载并合并到本地？\n(GitHub: ${username})`)) {
+      await syncFromGist();
+      renderLanding();
+    }
+  } else {
+    syncGistId = '';
+    saveSyncConfig();
+    // Upload current data
+    await syncToGist();
+  }
+
+  updateSyncStatusUI();
+  renderSyncModalContent();
+  alert(`已连接 GitHub (${username})，进度将自动同步到云端。`);
+}
+
+async function manualSyncUp() {
+  await syncToGist();
+  alert('已上传到云端！');
+}
+
+async function manualSyncDown() {
+  const ok = await syncFromGist();
+  if (ok) {
+    renderLanding();
+    alert('已从云端下载！');
+  } else {
+    alert('下载失败，请检查连接。');
+  }
+}
+
+function disconnectSync() {
+  if (!confirm('确定要断开云同步？（云端数据不会被删除）')) return;
+  clearSyncConfig();
+  updateSyncStatusUI();
+  renderSyncModalContent();
 }
 
 // ===== Start =====
