@@ -1125,10 +1125,12 @@ function selectOption(letter) {
     const idx = q._tempSelected.indexOf(letter);
     if (idx >= 0) q._tempSelected.splice(idx, 1);
     else q._tempSelected.push(letter);
+    renderCurrentOptions();
   } else {
     q._tempSelected = [letter];
+    // 单选：选完直接提交
+    submitAnswer();
   }
-  renderCurrentOptions();
 }
 
 function submitAnswer() {
