@@ -175,7 +175,7 @@ body {
   font-size: 12px; padding: 3px 10px; border-radius: 20px;
   background: var(--border); color: var(--text-secondary);
 }
-.tag-multi { background: rgba(59,130,246,0.1); color: var(--blue); }
+.tag-multi { background: rgba(59,130,246,0.15); color: var(--blue); font-weight: 700; border: 1px solid rgba(59,130,246,0.3); }
 
 .question-body { padding: 24px; }
 .question-text-area { display: flex; gap: 24px; }
@@ -1019,7 +1019,13 @@ function renderQuestion() {
   // Question
   document.getElementById('qNum').textContent = `第 ${currentQuiz.index + 1} 题`;
   document.getElementById('qIdTag').textContent = `Q${q.id}`;
-  document.getElementById('qMultiTag').style.display = isMulti ? '' : 'none';
+  const multiTag = document.getElementById('qMultiTag');
+  if (isMulti) {
+    multiTag.style.display = '';
+    multiTag.textContent = `多选 (选${q.answer.length}个)`;
+  } else {
+    multiTag.style.display = 'none';
+  }
   document.getElementById('qTextCn').textContent = q.cn_question;
   document.getElementById('qTextEn').textContent = q.en_question;
 
@@ -1044,7 +1050,8 @@ function renderQuestion() {
     document.getElementById('btnNext').style.display = '';
   } else {
     document.getElementById('answerSection').style.display = 'none';
-    document.getElementById('btnSubmit').style.display = '';
+    // 单选隐藏提交按钮（点选即提交），多选显示提交按钮
+    document.getElementById('btnSubmit').style.display = (isMulti || isExam) ? '' : 'none';
     document.getElementById('btnNext').style.display = isExam ? '' : 'none';
     document.getElementById('btnNext').textContent = isExam && currentQuiz.index === currentQuiz.questions.length - 1 ? '交卷 ✓' : '下一题 →';
   }
