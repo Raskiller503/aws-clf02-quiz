@@ -1136,7 +1136,15 @@ function startQuiz(mode) {
     pool = [...pool].sort(() => Math.random() - 0.5);
   }
 
-  currentQuiz = { questions: pool, index: 0, correct: 0, wrong: 0, mode: 'practice', startTime: Date.now() };
+  // 顺序模式下，跳转到第一道未回答的题目（恢复上次进度）
+  let startIndex = 0;
+  if (mode === 'sequential') {
+    const firstUnanswered = pool.findIndex(q => !progress[q.id]);
+    if (firstUnanswered !== -1) startIndex = firstUnanswered;
+    else startIndex = pool.length - 1; // 全部已答完，跳到最后一题
+  }
+
+  currentQuiz = { questions: pool, index: startIndex, correct: 0, wrong: 0, mode: 'practice', startTime: Date.now() };
   // Count existing correct/wrong for this set
   pool.forEach(q => {
     if (progress[q.id]) {
