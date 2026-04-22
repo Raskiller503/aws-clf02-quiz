@@ -914,6 +914,7 @@ let showEnglish = false;
 let darkMode = false;
 let selectedRange = null;
 let reviewFilter = 'all';
+let reviewFilteredList = []; // 当前复习列表的筛选结果，用于从复习进入刷题时支持上下题导航
 let examTimerInterval = null;
 let examTimeLeft = 0; // seconds
 
@@ -1614,13 +1615,21 @@ function showResults() {
 }
 
 function reviewFromResults(qId) {
-  const q = questions.find(x => x.id === qId);
-  if (!q) return;
-  currentQuiz = { questions: [q], index: 0, correct: 0, wrong: 0, mode: 'practice', startTime: Date.now() };
-  if (progress[q.id]) {
-    if (progress[q.id].correct) currentQuiz.correct = 1;
-    else currentQuiz.wrong = 1;
-  }
+  // 从结果页点击错题时，用当前 quiz 的全部错题列表作为导航池
+  const wrongPool = currentQuiz.questions.filter(q => progress[q.id] && !progress[q.id].correct);
+  const pool = wrongPool.length > 0 ? wrongPool : [questions.find(x => x.id === qId)].filter(Boolean);
+  const startIndex = pool.findIndex(x => x.id === qId);
+  if (startIndex < 0) return;
+
+  let correct = 0, wrong = 0;
+  pool.forEach(q => {
+    if (progress[q.id]) {
+      if (progress[q.id].correct) correct++;
+      else wrong++;
+    }
+  });
+
+  currentQuiz = { questions: pool, index: startIndex, correct, wrong, mode: 'practice', startTime: Date.now() };
   showPage('quiz');
   renderQuestion();
 }
@@ -1667,6 +1676,8 @@ function renderReviewList() {
     });
   }
 
+  reviewFilteredList = filtered;
+
   if (filtered.length === 0) {
     list.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-secondary);">没有匹配的题目</div>';
     return;
@@ -1692,13 +1703,19 @@ function renderReviewList() {
 }
 
 function openFromReview(qId) {
-  const q = questions.find(x => x.id === qId);
-  if (!q) return;
-  currentQuiz = { questions: [q], index: 0, correct: 0, wrong: 0, mode: 'practice', startTime: Date.now() };
-  if (progress[q.id]) {
-    if (progress[q.id].correct) currentQuiz.correct = 1;
-    else currentQuiz.wrong = 1;
-  }
+  const pool = reviewFilteredList.length > 0 ? reviewFilteredList : [questions.find(x => x.id === qId)].filter(Boolean);
+  const startIndex = pool.findIndex(x => x.id === qId);
+  if (startIndex < 0) return;
+
+  let correct = 0, wrong = 0;
+  pool.forEach(q => {
+    if (progress[q.id]) {
+      if (progress[q.id].correct) correct++;
+      else wrong++;
+    }
+  });
+
+  currentQuiz = { questions: pool, index: startIndex, correct, wrong, mode: 'practice', startTime: Date.now() };
   showPage('quiz');
   renderQuestion();
 }
