@@ -1274,6 +1274,11 @@ function renderQuestion() {
     document.getElementById('btnNext').style.display = '';
   }
 
+  // 复习模式下，最后一题按钮文字改为"返回列表"
+  if (!isExam && currentQuiz.source === 'review' && currentQuiz.index === currentQuiz.questions.length - 1) {
+    document.getElementById('btnNext').textContent = '返回列表 ↩';
+  }
+
   // Prev button
   document.getElementById('btnPrev').disabled = currentQuiz.index === 0;
 
@@ -1457,6 +1462,10 @@ function nextQuestion() {
     // End of quiz/exam
     if (isExam) {
       finishExam(false);
+    } else if (currentQuiz.source === 'review') {
+      // 从复习进入时，做完直接返回复习列表，不显示结果页
+      showPage('landing');
+      showLandingTab('review', document.querySelector('.nav-tab[data-tab="review"]'));
     } else {
       showResults();
     }
@@ -1629,7 +1638,7 @@ function reviewFromResults(qId) {
     }
   });
 
-  currentQuiz = { questions: pool, index: startIndex, correct, wrong, mode: 'practice', startTime: Date.now() };
+  currentQuiz = { questions: pool, index: startIndex, correct, wrong, mode: 'practice', source: 'review', startTime: Date.now() };
   showPage('quiz');
   renderQuestion();
 }
@@ -1715,7 +1724,7 @@ function openFromReview(qId) {
     }
   });
 
-  currentQuiz = { questions: pool, index: startIndex, correct, wrong, mode: 'practice', startTime: Date.now() };
+  currentQuiz = { questions: pool, index: startIndex, correct, wrong, mode: 'practice', source: 'review', startTime: Date.now() };
   showPage('quiz');
   renderQuestion();
 }
