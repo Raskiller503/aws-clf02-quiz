@@ -1215,6 +1215,19 @@ function renderQuestion() {
   const q = currentQuiz.questions[currentQuiz.index];
   if (!q) return;
 
+  // 复习模式：自动清除错题的旧答案，让用户重新作答
+  if (currentQuiz.source === 'review' && progress[q.id] && !progress[q.id].correct) {
+    delete progress[q.id];
+    delete q._tempSelected;
+    saveStorage();
+    let c = 0, w = 0;
+    currentQuiz.questions.forEach(qq => {
+      if (progress[qq.id]) { if (progress[qq.id].correct) c++; else w++; }
+    });
+    currentQuiz.correct = c;
+    currentQuiz.wrong = w;
+  }
+
   const isMulti = q.answer.length > 1;
   const isExam = currentQuiz.mode === 'exam';
   // In exam mode, use per-session state, not global progress
@@ -1384,7 +1397,12 @@ function submitAnswer() {
     document.getElementById('quizCorrect').textContent = currentQuiz.correct;
     document.getElementById('quizWrong').textContent = currentQuiz.wrong;
     document.getElementById('btnSubmit').style.display = 'none';
-    document.getElementById('btnNext').style.display = '';
+    // 复习模式：答错只能重做，答对才能下一题
+    if (currentQuiz.source === 'review' && !isCorrect) {
+      document.getElementById('btnNext').style.display = 'none';
+    } else {
+      document.getElementById('btnNext').style.display = '';
+    }
   }
 
   document.getElementById('quizCorrect').textContent = currentQuiz.correct;
