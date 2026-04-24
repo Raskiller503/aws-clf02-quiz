@@ -2343,10 +2343,10 @@ ${enOptionsText}`;
         'Authorization': `Bearer ${aiApiKey}`
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'o4-mini',
         messages: [{ role: 'user', content: prompt }],
-        temperature: 0.3,
-        max_tokens: 2000
+        reasoning_effort: 'low',
+        max_completion_tokens: 4000
       })
     });
 
