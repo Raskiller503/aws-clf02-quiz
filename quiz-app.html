@@ -993,8 +993,8 @@ function setupKeyboard() {
 
     const key = e.key.toUpperCase();
 
-    // A-F: select option
-    if ('ABCDEF'.includes(key) && key !== 'B') {
+    // A-F: select option (ignore when Ctrl/Cmd held for system shortcuts like Cmd+C)
+    if ('ABCDEF'.includes(key) && key !== 'B' && !e.ctrlKey && !e.metaKey) {
       const optionLetters = Object.keys(q.cn_options || q.en_options || {}).sort();
       if (optionLetters.includes(key)) {
         selectOption(key);
