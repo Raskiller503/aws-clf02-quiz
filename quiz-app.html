@@ -675,6 +675,37 @@ body {
 .modal p { font-size: 14px; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6; }
 .modal-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .file-input { display: none; }
+
+/* AI Assistant */
+.ai-response-panel {
+  margin-top: 16px; padding: 20px; background: var(--bg);
+  border-radius: 10px; border-left: 3px solid var(--blue);
+  animation: slideUp 0.4s ease;
+}
+.ai-response-panel h4 {
+  font-size: 14px; font-weight: 700; color: var(--blue);
+  margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+}
+.ai-response-text {
+  font-size: 14px; line-height: 1.8; white-space: pre-wrap; word-break: break-word;
+}
+.ai-loading {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; color: var(--text-secondary);
+}
+.ai-loading .spinner { width: 20px; height: 20px; border-width: 3px; }
+.btn-ai {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white; border: none;
+}
+.btn-ai:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-ai:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.ai-key-status {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; padding: 2px 8px; border-radius: 10px;
+  background: rgba(99,102,241,0.1); color: #6366f1;
+}
+.ai-key-status.not-set { background: rgba(239,68,68,0.1); color: var(--red); }
 </style>
 </head>
 <body>
@@ -689,6 +720,7 @@ body {
     <div class="sync-status" id="syncStatus" onclick="showSyncModal()" style="cursor:pointer;display:none;">
       <span class="sync-dot"></span><span id="syncText">未连接</span>
     </div>
+    <button class="icon-btn" onclick="showAIModal()" title="AI 助手设置" id="aiHeaderBtn" style="font-size:16px;">&#129302;</button>
     <button class="icon-btn" onclick="showSyncModal()" title="云同步">&#9729;</button>
     <button class="icon-btn" onclick="toggleDark()" title="切换主题" id="darkBtn">&#9790;</button>
     <button class="icon-btn" onclick="showDataModal()" title="数据管理">&#128190;</button>
@@ -846,6 +878,11 @@ body {
       <div class="vote-chart" id="voteChart"></div>
       <div class="comments-section" id="commentsSection"></div>
     </div>
+    <div id="aiResponseContainer" style="padding:0 24px 24px;"></div>
+  </div>
+
+  <div style="display:flex;justify-content:center;margin-bottom:8px;">
+    <button class="btn btn-ai" id="btnAskAI" onclick="askAI()">&#129302; 问 AI 解析</button>
   </div>
 
   <div class="quiz-actions">
@@ -903,6 +940,14 @@ body {
   </div>
 </div>
 
+<!-- AI Settings Modal -->
+<div class="modal-overlay" id="aiModal" onclick="if(event.target===this)closeAIModal()">
+  <div class="modal">
+    <h3>&#129302; AI 助手设置</h3>
+    <div id="aiModalContent"></div>
+  </div>
+</div>
+
 <script src="questions.js"></script>
 <script>
 // ===== Global State =====
@@ -927,6 +972,7 @@ let syncDebounceTimer = null;
 async function init() {
   loadStorage();
   loadSyncConfig();
+  loadAIConfig();
   updateSyncStatusUI();
 
   // Method 1: use pre-loaded data from questions.js <script> tag
@@ -1214,6 +1260,9 @@ function stopExamTimer() {
 function renderQuestion() {
   const q = currentQuiz.questions[currentQuiz.index];
   if (!q) return;
+
+  // Clear AI response from previous question
+  document.getElementById('aiResponseContainer').innerHTML = '';
 
   // 复习模式：自动清除错题的旧答案，让用户重新作答
   if (currentQuiz.source === 'review' && progress[q.id] && !progress[q.id].correct) {
@@ -2153,6 +2202,181 @@ function disconnectSync() {
   clearSyncConfig();
   updateSyncStatusUI();
   renderSyncModalContent();
+}
+
+// ===== AI Assistant =====
+let aiApiKey = '';
+
+function loadAIConfig() {
+  try {
+    aiApiKey = localStorage.getItem('clf02_ai_apikey') || '';
+  } catch(e) {}
+}
+
+function saveAIConfig() {
+  localStorage.setItem('clf02_ai_apikey', aiApiKey);
+}
+
+function showAIModal() {
+  document.getElementById('aiModal').classList.add('active');
+  renderAIModalContent();
+}
+
+function closeAIModal() {
+  document.getElementById('aiModal').classList.remove('active');
+}
+
+function renderAIModalContent() {
+  const el = document.getElementById('aiModalContent');
+  if (aiApiKey) {
+    const masked = aiApiKey.slice(0, 5) + '...' + aiApiKey.slice(-4);
+    el.innerHTML = `
+      <div class="sync-connected">&#9989; 已绑定 OpenAI API Key</div>
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px;">
+        当前 Key: <code style="font-size:12px;background:var(--border);padding:2px 6px;border-radius:4px;">${escHtml(masked)}</code>
+      </p>
+      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;line-height:1.7;">
+        在做题时点击「&#129302; 问 AI 解析」按钮，AI 会帮你分析题目并解释答案。<br>
+        API Key 仅保存在你的浏览器本地，不会上传到任何服务器。
+      </p>
+      <div class="sync-actions-row">
+        <button class="btn btn-primary" onclick="updateAIKey()">更换 Key</button>
+        <button class="btn btn-danger" onclick="removeAIKey()">删除 Key</button>
+      </div>
+    `;
+  } else {
+    el.innerHTML = `
+      <div class="sync-info">
+        <b>使用方法：</b><br>
+        1. 前往 <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI API Keys 页面</a> 创建一个 API Key<br>
+        2. 将 Key 粘贴到下方输入框<br>
+        3. 做题时点击「&#129302; 问 AI 解析」即可获取 AI 分析<br><br>
+        <b>&#128274; 隐私说明：</b>Key 仅保存在你的浏览器本地 (localStorage)，不会上传到任何服务器。每位用户需要使用自己的 API Key。
+      </div>
+      <div class="sync-modal-body" style="margin-top:16px;">
+        <label>OpenAI API Key</label>
+        <input type="password" id="aiKeyInput" placeholder="sk-...">
+      </div>
+      <div class="sync-actions-row">
+        <button class="btn btn-primary" onclick="saveAIKey()">&#128190; 保存</button>
+        <button class="btn btn-secondary" onclick="closeAIModal()">取消</button>
+      </div>
+    `;
+  }
+}
+
+function saveAIKey() {
+  const input = document.getElementById('aiKeyInput');
+  const key = input.value.trim();
+  if (!key) { alert('请输入 API Key'); return; }
+  aiApiKey = key;
+  saveAIConfig();
+  renderAIModalContent();
+  alert('API Key 已保存！');
+}
+
+function updateAIKey() {
+  aiApiKey = '';
+  renderAIModalContent();
+}
+
+function removeAIKey() {
+  if (!confirm('确定要删除已保存的 API Key？')) return;
+  aiApiKey = '';
+  saveAIConfig();
+  renderAIModalContent();
+}
+
+async function askAI() {
+  if (!aiApiKey) {
+    showAIModal();
+    return;
+  }
+
+  const q = currentQuiz.questions[currentQuiz.index];
+  if (!q) return;
+
+  const btn = document.getElementById('btnAskAI');
+  btn.disabled = true;
+  btn.innerHTML = '&#129302; AI 分析中...';
+
+  // Build AI response container
+  const container = document.getElementById('aiResponseContainer');
+  container.innerHTML = `<div class="ai-response-panel">
+    <h4>&#129302; AI 解析</h4>
+    <div class="ai-loading"><div class="spinner"></div>正在分析题目...</div>
+  </div>`;
+
+  // Build prompt with question content
+  const optionsText = Object.entries(q.cn_options || q.en_options || {}).sort()
+    .map(([k, v]) => `${k}. ${v}`).join('\n');
+  const enOptionsText = q.en_options
+    ? Object.entries(q.en_options).sort().map(([k, v]) => `${k}. ${v}`).join('\n')
+    : '';
+
+  let prompt = `你是 AWS 认证考试辅导专家。请分析以下 AWS CLF-C02 Cloud Practitioner 考试题目，给出正确答案和详细解析。
+
+题目：
+${q.cn_question || q.en_question}
+
+选项：
+${optionsText}`;
+
+  if (q.en_question && q.cn_question) {
+    prompt += `\n\n英文原文：
+${q.en_question}
+
+${enOptionsText}`;
+  }
+
+  prompt += `\n\n请按以下格式回答：
+1. 正确答案是什么
+2. 为什么选这个答案（简明扼要）
+3. 为什么其他选项不对（逐一说明）
+4. 相关 AWS 知识点总结`;
+
+  try {
+    const resp = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${aiApiKey}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o-mini',
+        messages: [{ role: 'user', content: prompt }],
+        temperature: 0.3,
+        max_tokens: 2000
+      })
+    });
+
+    if (!resp.ok) {
+      const err = await resp.json().catch(() => ({}));
+      if (resp.status === 401) {
+        throw new Error('API Key 无效，请在设置中重新配置。');
+      } else if (resp.status === 429) {
+        throw new Error('请求过于频繁或额度不足，请稍后再试。');
+      } else {
+        throw new Error(err.error?.message || `请求失败 (${resp.status})`);
+      }
+    }
+
+    const data = await resp.json();
+    const aiText = data.choices?.[0]?.message?.content || '未获取到回答';
+
+    container.innerHTML = `<div class="ai-response-panel">
+      <h4>&#129302; AI 解析</h4>
+      <div class="ai-response-text">${escHtml(aiText)}</div>
+    </div>`;
+  } catch(e) {
+    container.innerHTML = `<div class="ai-response-panel" style="border-left-color:var(--red);">
+      <h4 style="color:var(--red);">&#9888; AI 请求失败</h4>
+      <div class="ai-response-text" style="color:var(--red);">${escHtml(e.message)}</div>
+    </div>`;
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '&#129302; 问 AI 解析';
+  }
 }
 
 // ===== Start =====
