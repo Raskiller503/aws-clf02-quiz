@@ -2336,17 +2336,16 @@ ${enOptionsText}`;
 4. 相关 AWS 知识点总结`;
 
   try {
-    const resp = await fetch('https://api.openai.com/v1/chat/completions', {
+    const resp = await fetch('https://jp.api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${aiApiKey}`
       },
       body: JSON.stringify({
-        model: 'o4-mini',
+        model: 'gpt-5.4',
         messages: [{ role: 'user', content: prompt }],
-        reasoning_effort: 'low',
-        max_completion_tokens: 4000
+        temperature: 0.3
       })
     });
 
